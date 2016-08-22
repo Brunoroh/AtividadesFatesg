@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PTipoAssociado {
     
@@ -47,4 +49,82 @@ public class PTipoAssociado {
         cnn.close();
         
     }
+    
+    public void alterar(ETipoAssociado parametro) throws SQLException{
+        
+        String sql = "UPDATE tipo_associado SET descricao = ?, "
+                +"valor_mensalidade = ? "
+                +"WHERE codigo = ?";
+        
+        Connection cnn = util.Conexao.getConexao();
+        PreparedStatement prd = cnn.prepareStatement(sql);
+        
+        //Seta os valores do prepared(?) com base no parametro recebido
+        prd.setString(1, parametro.getDescricao());
+        prd.setDouble(2, parametro.getValorMensalidade());
+        prd.setInt(3, parametro.getCodigo());
+        
+        prd.execute();
+        cnn.close();
+        
+        
+        
+    }
+    
+    public void excluir(int codigo) throws SQLException{
+        
+        String sql = "DELETE FROM tipo_associado WHERE codigo = ?";
+        
+        Connection cnn = util.Conexao.getConexao();
+        PreparedStatement prd = cnn.prepareStatement(sql);
+        
+        prd.setInt(1, codigo);
+        prd.execute();
+        cnn.close();
+        
+    }
+
+    public ETipoAssociado consultar(int codigo) throws SQLException{
+        
+        String sql = "SELECT * FROM tipo_associado WHERE codigo = ?";
+        Connection cnn = util.Conexao.getConexao();
+        PreparedStatement prd = cnn.prepareStatement(sql);
+        prd.setInt(1, codigo);
+        
+        ResultSet rs = prd.executeQuery();
+        
+        ETipoAssociado retorno = new ETipoAssociado();
+        if(rs.next()){
+            retorno.setCodigo(rs.getInt("codigo"));
+            retorno.setDescricao(rs.getString("descricao"));
+            retorno.setValorMensalidade(rs.getDouble("valor_mensalidade"));
+        }
+        rs.close();
+        cnn.close();
+        return retorno;
+    }
+    
+    public List<ETipoAssociado> listar() throws SQLException{
+    
+        String sql = "SELECT * FROM tipo_associado";
+        
+        Connection cnn = util.Conexao.getConexao();
+        Statement stm = cnn.createStatement();
+        
+        ResultSet rs = stm.executeQuery(sql);
+        
+        List<ETipoAssociado> lista = new ArrayList<>();
+        
+        while(rs.next()){
+            ETipoAssociado tipo = new ETipoAssociado();
+            tipo.setCodigo(rs.getInt("codigo"));
+            tipo.setDescricao(rs.getString("descricao"));
+            tipo.setValorMensalidade(rs.getDouble("valor_mensalidade"));
+            lista.add(tipo);
+        }
+        
+        return lista;
+        
+    }
+
 }
