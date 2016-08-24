@@ -17,9 +17,8 @@ public class Exercicio4 {
         System.out.println("Avaliacao "+(i+1)+" "+notas[i]);
     }
     
-    porcentagem = (notas[3]+notas[4]);
-    porcentagem = porcentagem / 20;
-    porcentagem = porcentagem * 100;
+    porcentagem = (notas[3]+notas[4])/ 20.0* 100;
+ 
     
     System.out.print("4 e 5 corresponde a "+porcentagem+" %");
     
