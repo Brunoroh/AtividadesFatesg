@@ -88,12 +88,12 @@ public class Exercicio10 {
         double valorDoProduto2;
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
-                valorTotal2[j] = matriz[j][i];
-                System.out.print("O valor total do produto "+(i+1)+" é de : "+valorTotal[j]);
+                valorTotal2[i] += matriz[j][i];
             }
+            System.out.println("O valor total do produto "+(i+1)+" é de : "+valorTotal2[i]);
         }
         //imprime o valor total de cada armazem
-        for (int i = 0; i < valorTotal.length; i++) {
+        for (int i = 0; i < valorTotal2.length; i++) {
             System.out.println("Valor total do Produto "+(i+1)+" em todos os armazens é de : "+valorTotal2[i]);
         }
     }
