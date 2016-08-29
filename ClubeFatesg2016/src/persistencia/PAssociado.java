@@ -108,13 +108,12 @@ public class PAssociado {
         
         while(rs.next()){
             EAssociado associado = new EAssociado();
-            ETipoAssociado tipo = new ETipoAssociado();
-            tipo.setCodigo(rs.getInt("codigo_tipo_associado"));
+            
             associado.setCodigo(rs.getInt("codigo"));
             associado.setNome(rs.getString("nome"));
             associado.setEndereco(rs.getString("endereco"));
             associado.setTelefone(rs.getString("telefone"));
-            associado.setTipoAssociado(tipo);
+            associado.getTipoAssociado().setCodigo(rs.getInt("codigo_tipo_associado"));
             lista.add(associado);
         }
         
