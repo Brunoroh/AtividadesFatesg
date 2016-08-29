@@ -1,15 +1,16 @@
 package console;
 
 import entidade.EAssociado;
-import entidade.ETipoAssociado;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 import persistencia.PAssociado;
-import persistencia.PTipoAssociado;
 
 public class PAssociadoTeste {
 
     public static void main(String[] args) throws SQLException {
+        
+        Scanner scanner = new Scanner(System.in);
 
 //        System.out.println("Testando a inclusao do associado");
 //        
@@ -53,15 +54,29 @@ public class PAssociadoTeste {
 //        persistencia.excluir(1);
 //        
 
-        System.out.println("Testando o consultar");
-        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Testando o consultar");
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.println("Digite o codigo : ");
+//        int codigo = scanner.nextInt();
+//        
+//        PTipoAssociado persistencia = new PTipoAssociado();
+//        ETipoAssociado tipo = persistencia.consultar(codigo);
 
-        System.out.println("Digite o codigo : ");
-        int codigo = scanner.nextInt();
+        System.out.println("Testando o listar");
         
-        PTipoAssociado persistencia = new PTipoAssociado();
-        ETipoAssociado tipo = persistencia.consultar(codigo);
-    
+        System.out.println("Digite o nome : ");
+        String nome = scanner.next();
+        
+        PAssociado persistencia = new PAssociado();
+        List<EAssociado> lista = persistencia.listar(nome);
 
+        for(EAssociado associado : lista){
+            System.out.println("Codgo....................:"+associado.getCodigo());
+            System.out.println("Nome.....................:"+associado.getNome());
+            System.out.println("Endereco.................:"+associado.getEndereco());
+            System.out.println("Telefone.................:"+associado.getTelefone());
+            System.out.println("Codigo Tipo Associado....:"+associado.getTipoAssociado().getCodigo());
+        }
     }
 }
