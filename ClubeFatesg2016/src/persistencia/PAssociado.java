@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PAssociado {
     
@@ -74,20 +76,49 @@ public class PAssociado {
         ResultSet rs = prd.executeQuery();
         
         ETipoAssociado eTipoAssociado = new ETipoAssociado();
+        PTipoAssociado pTipoAssociado = new PTipoAssociado();
         
         EAssociado eAssociado = new EAssociado();
         if(rs.next()){
+            eTipoAssociado = pTipoAssociado.consultar(rs.getInt("codigo_tipo_associado"));
             eAssociado.setCodigo(rs.getInt("codigo"));
             eAssociado.setNome(rs.getString("nome"));
             eAssociado.setEndereco(rs.getString("endereco"));
             eAssociado.setTelefone(rs.getString("telefone"));
-            eTipoAssociado.setCodigo(rs.getInt("codigo_tipo_associado"));
             eAssociado.setTipoAssociado(eTipoAssociado);
         }
         rs.close();
         cnn.close();
         
         return eAssociado;      
+    }
+    
+    
+    public List<EAssociado> listar(String nome)throws SQLException{
+        
+        String sql = "SELECET * FROM associado WHERE nome = %?% ";
+        
+        Connection cnn = util.Conexao.getConexao();
+        PreparedStatement prd = cnn.prepareStatement(sql);
+        prd.setString(1,nome);
+        
+        ResultSet rs = prd.executeQuery();
+        
+        List<EAssociado> lista = new ArrayList<>();
+        
+        while(rs.next()){
+            EAssociado associado = new EAssociado();
+            ETipoAssociado tipo = new ETipoAssociado();
+            tipo.setCodigo(rs.getInt("codigo_tipo_associado"));
+            associado.setCodigo(rs.getInt("codigo"));
+            associado.setNome(rs.getString("nome"));
+            associado.setEndereco(rs.getString("endereco"));
+            associado.setTelefone(rs.getString("telefone"));
+            associado.setTipoAssociado(tipo);
+            lista.add(associado);
+        }
+        
+        return lista;
     }
     
     
