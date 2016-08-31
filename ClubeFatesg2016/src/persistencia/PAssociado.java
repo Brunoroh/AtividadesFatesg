@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,13 +97,13 @@ public class PAssociado {
     
     public List<EAssociado> listar(String nome)throws SQLException{
         
-        String sql = "SELECET * FROM associado WHERE nome = %?% ";
+        String sql = "SELECET * FROM associado WHERE nome = %"+nome+"% ";
         
         Connection cnn = util.Conexao.getConexao();
-        PreparedStatement prd = cnn.prepareStatement(sql);
-        prd.setString(1,nome);
+        Statement stm = cnn.createStatement();
         
-        ResultSet rs = prd.executeQuery();
+        
+        ResultSet rs = stm.executeQuery(sql);
         
         List<EAssociado> lista = new ArrayList<>();
         
