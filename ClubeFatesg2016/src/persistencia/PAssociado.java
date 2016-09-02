@@ -121,5 +121,4 @@ public class PAssociado {
         return lista;
     }
     
-    
 }
