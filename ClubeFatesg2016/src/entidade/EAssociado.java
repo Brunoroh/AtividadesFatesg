@@ -6,13 +6,12 @@ public class EAssociado {
     private String nome;
     private String endereco;
     private String telefone;
+    private String senha;
     private ETipoAssociado tipoAssociado;
-
+    
     public EAssociado() {
         tipoAssociado = new ETipoAssociado();
     }
-    
-    
 
     public int getCodigo() {
         return codigo;
@@ -54,6 +53,12 @@ public class EAssociado {
         this.tipoAssociado = tipoAssociado;
     }
 
-    
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
     
 }

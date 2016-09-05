@@ -28,7 +28,7 @@ public class PAssociadoTeste {
 //        pAssociado.incluir(associado);
 //        
 //        System.out.println("Fim do teste de inclusão de associado");
-
+//
 
 //        System.out.println("Testando a alteração do associado");
 //
@@ -63,20 +63,20 @@ public class PAssociadoTeste {
 //        PTipoAssociado persistencia = new PTipoAssociado();
 //        ETipoAssociado tipo = persistencia.consultar(codigo);
 
-        System.out.println("Testando o listar");
-        
-        System.out.println("Digite o nome : ");
-        String nome = scanner.next();
-        
-        PAssociado persistencia = new PAssociado();
-        List<EAssociado> lista = persistencia.listar(nome);
-
-        for(EAssociado associado : lista){
-            System.out.println("Codgo....................:"+associado.getCodigo());
-            System.out.println("Nome.....................:"+associado.getNome());
-            System.out.println("Endereco.................:"+associado.getEndereco());
-            System.out.println("Telefone.................:"+associado.getTelefone());
-            System.out.println("Codigo Tipo Associado....:"+associado.getTipoAssociado().getCodigo());
-        }
+//        System.out.println("Testando o listar");
+//        
+//        System.out.println("Digite o nome : ");
+//        String nome = scanner.next();
+//        
+//        PAssociado persistencia = new PAssociado();
+//        List<EAssociado> lista = persistencia.listar(nome);
+//
+//        for(EAssociado associado : lista){
+//            System.out.println("Codgo....................:"+associado.getCodigo());
+//            System.out.println("Nome.....................:"+associado.getNome());
+//            System.out.println("Endereco.................:"+associado.getEndereco());
+//            System.out.println("Telefone.................:"+associado.getTelefone());
+//            System.out.println("Codigo Tipo Associado....:"+associado.getTipoAssociado().getCodigo());
+//        }
     }
 }

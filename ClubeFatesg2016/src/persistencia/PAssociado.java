@@ -13,8 +13,8 @@ import java.util.List;
 public class PAssociado {
     
     public void incluir(EAssociado parametro)throws SQLException{
-        String sql = "INSERT INTO associado (nome, endereco, telefone, codigo_tipo_associado)"
-                +"VALUES (?,?,?,?)";
+        String sql = "INSERT INTO associado (nome, endereco, telefone, senha, codigo_tipo_associado)"
+                +"VALUES (?,?,?,?,?)";
         
         Connection cnn = util.Conexao.getConexao();
         
@@ -23,7 +23,8 @@ public class PAssociado {
         prd.setString(1, parametro.getNome());
         prd.setString(2, parametro.getEndereco());
         prd.setString(3, parametro.getTelefone());
-        prd.setInt(4, parametro.getTipoAssociado().getCodigo());
+        prd.setString(4, parametro.getSenha());
+        prd.setInt(5, parametro.getTipoAssociado().getCodigo());
         
         prd.execute();
         
@@ -35,7 +36,8 @@ public class PAssociado {
         String sql = "UPDATE associado SET nome = ?, "
                 +"endereco = ?, "
                 +"telefone = ?, "
-                +"codigo_tipo_associado = ? "
+                +"codigo_tipo_associado = ?, "
+                +"senha = ? "
                 +"WHERE codigo = ?";
         
         Connection cnn = util.Conexao.getConexao();
@@ -44,8 +46,9 @@ public class PAssociado {
         prd.setString(1, parametro.getNome());
         prd.setString(2 , parametro.getEndereco());
         prd.setString(3, parametro.getTelefone());
-        prd.setInt(4, parametro.getTipoAssociado().getCodigo());
-        prd.setInt(5, parametro.getCodigo());
+        prd.setString(4, parametro.getSenha());
+        prd.setInt(5, parametro.getTipoAssociado().getCodigo());
+        prd.setInt(6, parametro.getCodigo());
         
         prd.execute();
         cnn.close();
@@ -86,6 +89,7 @@ public class PAssociado {
             eAssociado.setNome(rs.getString("nome"));
             eAssociado.setEndereco(rs.getString("endereco"));
             eAssociado.setTelefone(rs.getString("telefone"));
+            eAssociado.setSenha(rs.getString("senha"));
             eAssociado.setTipoAssociado(eTipoAssociado);
         }
         rs.close();

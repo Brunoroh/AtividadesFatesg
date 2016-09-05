@@ -23,7 +23,7 @@ public class PTipoAssociado {
         //da conexão criada anteriormente
         PreparedStatement prd = cnn.prepareStatement(sql);
 
-        //Seta is vakires do prepared (?) com base no parametro recebido
+        //Seta os valores do prepared (?) com base no parametro recebido
         prd.setString(1, parametro.getDescricao());
         prd.setDouble(2, parametro.getValorMensalidade());
         

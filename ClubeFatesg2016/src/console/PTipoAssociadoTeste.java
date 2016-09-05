@@ -2,28 +2,29 @@ package console;
 
 import entidade.ETipoAssociado;
 import java.sql.SQLException;
-import java.util.Scanner;
-import persistencia.PTipoAssociado;
+import negocio.NTipoAssociado;
 
 public class PTipoAssociadoTeste {
 
     public static void main(String[] args) throws SQLException {
 
-//        System.out.println("Testando a inclusao do tipo associado");
-//        
-//        ETipoAssociado tipoAssociado = new ETipoAssociado();
-//        
-//        tipoAssociado.setDescricao("Socio Titular");
-//        tipoAssociado.setValorMensalidade(100.0);
-//        
-//        PTipoAssociado persistencia = new PTipoAssociado();
-//        persistencia.incluir(tipoAssociado);
-//        
-//        if(tipoAssociado.getCodigo() != 0 ){
-//            System.out.println("Inclusao efetuada com sucesso");
-//        }else{
-//            System.out.println("Deu Ruim");
-//        }
+        System.out.println("Testando a inclusao do tipo associado");
+        
+        ETipoAssociado tipoAssociado = new ETipoAssociado();
+        
+        tipoAssociado.setDescricao("Socio dependente");
+        tipoAssociado.setValorMensalidade(0.0);
+        
+        NTipoAssociado nTipoAssociado = new NTipoAssociado();
+        nTipoAssociado.salvar(tipoAssociado);
+
+        if(tipoAssociado.getCodigo() != 0 ){
+            System.out.println("Inclusao efetuada com sucesso.");
+        }else{
+            System.out.println("Erro na inclusão.");
+        }
+        
+        
 //        System.out.println("Testando a alteração");
 //        
 //        ETipoAssociado tipo = new ETipoAssociado();
@@ -44,22 +45,22 @@ public class PTipoAssociadoTeste {
 //          persistencia.excluir(3);
 //          System.out.println("Excluido com sucesso");
 
-        System.out.println("Testando o consultar");
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.println("Digite o codigo : ");
-        int codigo = scanner.nextInt();
-
-        PTipoAssociado persistencia = new PTipoAssociado();
-        ETipoAssociado tipo = persistencia.consultar(codigo);
-
-        if (tipo.getCodigo() != 0) {
-            System.out.println("Codigo.............: "+tipo.getCodigo());
-            System.out.println("Descricao..........: "+tipo.getDescricao());
-            System.out.println("Valor Mensalidade..: "+tipo.getValorMensalidade());
-        } else {
-            System.out.println("Tipo Associado não encontrado");
-        }
+//        System.out.println("Testando o consultar");
+//        Scanner scanner = new Scanner(System.in);
+//        
+//        System.out.println("Digite o codigo : ");
+//        int codigo = scanner.nextInt();
+//
+//        PTipoAssociado persistencia = new PTipoAssociado();
+//        ETipoAssociado tipo = persistencia.consultar(codigo);
+//
+//        if (tipo.getCodigo() != 0) {
+//            System.out.println("Codigo.............: "+tipo.getCodigo());
+//            System.out.println("Descricao..........: "+tipo.getDescricao());
+//            System.out.println("Valor Mensalidade..: "+tipo.getValorMensalidade());
+//        } else {
+//            System.out.println("Tipo Associado não encontrado");
+//        }
 //
 //        System.out.println("Testando o Listar");
 //        
