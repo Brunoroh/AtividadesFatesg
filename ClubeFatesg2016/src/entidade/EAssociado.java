@@ -61,4 +61,11 @@ public class EAssociado {
         this.senha = senha;
     }
     
+    public boolean associadoAtivo(EAssociado associado){
+        
+        
+        
+        return false;
+    }
+    
 }

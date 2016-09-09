@@ -8,7 +8,6 @@ public abstract class Veiculo {
     
     abstract void limpar();
     
-    public void mudarOleo(){
-    };
+    
     
 }

@@ -23,7 +23,6 @@ public class Automovel extends Veiculo {
         System.out.println("Metodo limpar");
     }
     
-    @Override
     public void mudarOleo(){
         System.out.println("Metodo Mudar Oleo");
     }

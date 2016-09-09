@@ -35,6 +35,13 @@ public class NAssociado {
         return persistencia.listar(parametro);
     }
     
+    public boolean validarLogin(EAssociado parametro) throws SQLException{
+     
+        
+        
+        return true;
+    }
+    
     
     
 }
