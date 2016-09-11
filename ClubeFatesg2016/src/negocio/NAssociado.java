@@ -9,8 +9,8 @@ public class NAssociado {
     
     private PAssociado persistencia;
 
-    public NAssociado(PAssociado persistencia) {
-        this.persistencia = persistencia;
+    public NAssociado() {
+        this.persistencia = new PAssociado();
     }
     
     public void salvar(EAssociado parametro) throws SQLException{
@@ -35,11 +35,14 @@ public class NAssociado {
         return persistencia.listar(parametro);
     }
     
-    public boolean validarLogin(EAssociado parametro) throws SQLException{
+    public boolean validarLogin(EAssociado parametro, String senha) throws SQLException{
      
+        if(parametro.getSenha().equals(senha)){
+            return true;
+        }else{
+            return false;
+        }
         
-        
-        return true;
     }
     
     

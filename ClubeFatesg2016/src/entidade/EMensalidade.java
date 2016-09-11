@@ -1,13 +1,14 @@
 package entidade;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class EMensalidade {
 
     private int codigo;
     private String referencia;
-    private Date dataVencimento;
-    private Date dataPagamento;
+    private Timestamp dataVencimento;
+    private Timestamp dataPagamento;
     private double valorMensalidade;
     private double valorPagamento;
     private EAssociado eAssociado;
@@ -25,19 +26,19 @@ public class EMensalidade {
         this.referencia = referencia;
     }
 
-    public Date getDataVencimento() {
+    public Timestamp getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(Date dataVencimento) {
+    public void setDataVencimento(Timestamp dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
 
-    public Date getDataPagamento() {
+    public Timestamp getDataPagamento() {
         return dataPagamento;
     }
 
-    public void setDataPagamento(Date dataPagamento) {
+    public void setDataPagamento(Timestamp dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
 

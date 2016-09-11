@@ -27,7 +27,6 @@ public class PAssociado {
         prd.setInt(5, parametro.getTipoAssociado().getCodigo());
         
         prd.execute();
-        
         cnn.close();
     } 
     

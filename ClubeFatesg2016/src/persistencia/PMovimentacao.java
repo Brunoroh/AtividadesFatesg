@@ -18,8 +18,12 @@ public class PMovimentacao {
         
         PreparedStatement prd = cnn.prepareStatement(sql);
         
-        prd.setDate(1, parametro.getDataHoraEntrada());
+        prd.setTimestamp(1, parametro.getDataHoraEntrada());
         prd.setInt(2, parametro.getEAssociado().getCodigo());
+        
+        
+        prd.execute();
+        cnn.close();
         
     }
     
@@ -31,20 +35,20 @@ public class PMovimentacao {
         Connection cnn = util.Conexao.getConexao();
         PreparedStatement prd = cnn.prepareStatement(sql);
         
-        prd.setDate(1, parametro.getDataHoraSaida());
+        prd.setTimestamp(1, parametro.getDataHoraSaida());
         
         prd.execute();
         cnn.close();
         
     }
     
-    public EMovimentacao consultar(int codigo) throws SQLException{
+    public EMovimentacao consultar(int codigoAssociado) throws SQLException{
         
-        String sql = "SELECT * FROM consultar WHERE codigo = ? ";
+        String sql = "SELECT * FROM consultar WHERE codigo_associado = ? ORDER BY hora_entrada DESC limit 1 ";
         
         Connection cnn = util.Conexao.getConexao();
         PreparedStatement prd = cnn.prepareStatement(sql);
-        prd.setInt(1, codigo);
+        prd.setInt(1, codigoAssociado);
         
         ResultSet rs = prd.executeQuery();
         
@@ -54,10 +58,13 @@ public class PMovimentacao {
         if(rs.next()){
             eAssociado = pAssociado.consultar(rs.getInt("codigo_associado"));
             eMovimentacao.setCodigo(rs.getInt("codigo"));
-            eMovimentacao.setDataHoraEntrada(rs.getDate("hora_entrada"));
-            eMovimentacao.setDataHoraSaida(rs.getDate("hora_saida"));
+            eMovimentacao.setDataHoraEntrada(rs.getTimestamp("hora_entrada"));
+            eMovimentacao.setDataHoraSaida(rs.getTimestamp("hora_saida"));
             eMovimentacao.setEAssociado(eAssociado);
         }
+        
+        rs.close();
+        cnn.close();
     
         return eMovimentacao;
     }

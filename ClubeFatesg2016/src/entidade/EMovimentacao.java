@@ -1,12 +1,13 @@
 package entidade;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class EMovimentacao {
     
     private int codigo;
-    private Date dataHoraEntrada;
-    private Date dataHoraSaida;
+    private Timestamp dataHoraEntrada;
+    private Timestamp dataHoraSaida;
     private EAssociado eAssociado;
 
     public EMovimentacao() {
@@ -21,19 +22,19 @@ public class EMovimentacao {
         this.codigo = codigo;
     }
 
-    public Date getDataHoraEntrada() {
+    public Timestamp getDataHoraEntrada() {
         return dataHoraEntrada;
     }
 
-    public void setDataHoraEntrada(Date dataHoraEntrada) {
+    public void setDataHoraEntrada(Timestamp dataHoraEntrada) {
         this.dataHoraEntrada = dataHoraEntrada;
     }
 
-    public Date getDataHoraSaida() {
+    public Timestamp getDataHoraSaida() {
         return dataHoraSaida;
     }
 
-    public void setDataHoraSaida(Date dataHoraSaida) {
+    public void setDataHoraSaida(Timestamp dataHoraSaida) {
         this.dataHoraSaida = dataHoraSaida;
     }
     
@@ -44,23 +45,5 @@ public class EMovimentacao {
     public void setEAssociado(EAssociado eAssociado) {
         this.eAssociado = eAssociado;
     }
-    
-    public void registrarMovimentacao(int codigo,String senha){
-        
-    }
-    
-    public void registrarEntrada(){
-        
-    }
-    
-    public void registrarSaida(){
-        
-    }
-    
-    public void verificarEntrada(){
-        
-    }
-    
-    
     
 }
