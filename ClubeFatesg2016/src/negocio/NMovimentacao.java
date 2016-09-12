@@ -18,19 +18,19 @@ public class NMovimentacao {
     
     public void registrarMovimentacao(EMovimentacao movimentacao,EAssociado associado, String senha) throws SQLException{
         
+        NMensalidade nMensalidade = new NMensalidade();
+        
         if(verificarEntrada(associado,senha)){
-            if(movimentacao.getCodigo() != 0 ){
-                registrarEntrada(movimentacao);
-            }else{
-                registrarSaida(movimentacao);
+            if(nMensalidade.existeMensalidadeEmAberto(associado)){
+                if(movimentacao.getCodigo() != 0 ){
+                    registrarEntrada(movimentacao);
+                }else{
+                    registrarSaida(movimentacao);
+                }
             }
         }else{
             System.out.println("Usuario e senha incorreto");
         }
-        
-        Calendar calendar = Calendar.getInstance();
-        Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
-        
         
     }
     

@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PMensalidade {
@@ -68,8 +69,28 @@ public class PMensalidade {
         Connection cnn = util.Conexao.getConexao();
         
         PreparedStatement prd = cnn.prepareStatement(sql);
+        prd.setInt(1, codigoAssociado);
         
+        ResultSet rs = prd.executeQuery(sql);
+        
+        List<EMensalidade> lista = new ArrayList<>();
+        
+        while(rs.next()){
+            EMensalidade eMensalidade = new EMensalidade();
+            eMensalidade.setCodigo(rs.getInt("codigo"));
+            eMensalidade.setReferencia(rs.getString("referencia"));
+            eMensalidade.setDataPagamento(rs.getTimestamp("data_vencimento"));
+            eMensalidade.setDataVencimento(rs.getTimestamp("data_pagamento"));
+            eMensalidade.setValorMensalidade(rs.getDouble("valor_mensalidade"));
+            eMensalidade.setValorPagamento(rs.getDouble("valor_pagamento"));
+            eMensalidade.getEAssociado().setCodigo(rs.getInt("codigo_associado"));
+            lista.add(eMensalidade);
+        }
+        
+        return lista;
     }
+    
+    
     
     
     
