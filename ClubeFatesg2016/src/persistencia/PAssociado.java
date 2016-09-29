@@ -100,7 +100,7 @@ public class PAssociado {
     
     public List<EAssociado> listar(String nome)throws SQLException{
         
-        String sql = "SELECET * FROM associado WHERE nome = %"+nome+"% ";
+        String sql = "SELECT * FROM associado WHERE nome = %"+nome+"% ";
         
         Connection cnn = util.Conexao.getConexao();
         Statement stm = cnn.createStatement();
