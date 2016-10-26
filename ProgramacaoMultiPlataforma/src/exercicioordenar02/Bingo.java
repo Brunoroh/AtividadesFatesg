@@ -14,47 +14,39 @@ public class Bingo {
         
         int sorteados;
      
-        for (int i = 0; i < numeros.length && continuar; i++) {
+        for (int i = 0; i < 90 && continuar; i++) {
             
-            int numero = random.nextInt(90);
-            
-            if(Sortear(numeros, numero,i)){
-                
-                ordenar(numeros,i);
+                Sortear(numeros,i);
+                ordenar(numeros);
                 escrever(numeros,i);
                 
                 System.out.println("Enter para continuar e $ para Parar");
-                String digitado = teclado.nextLine();
+                String digitado = " ";
                 
                 if(digitado.equals("$")){
                     continuar = false;
                 }
                 
-            }else{
-                i--;
-            }
             
-                       
+                
+            
+            
         }
-        
-       
-        
         
     }
     
-    public static void ordenar(int[] vetor, int qtd) {
+    public static void ordenar(int[] vetor) {
 
-        for (int j = 1; j < vetor.length; j++) {
-            int i;
-            int aux;
-            aux = vetor[j];
-            i = j - 1;
-
-            while (i >= 0 && vetor[i] > aux) {
-                vetor[i + 1] = vetor[i];
-                i = i - 1;
+        int tmp;
+        int aux;
+        for (int i = vetor.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (vetor[j] > vetor[j + 1]) {
+                    aux = vetor[j];
+                    vetor[j] = vetor[j + 1];
+                    vetor[j + 1] = aux;
+                }
             }
-            vetor[i + 1] = aux;
         }
     }
     
@@ -62,29 +54,35 @@ public class Bingo {
         
         String texto = "";
         
-         for (int i = 0; i <= qtd; i++) {
-            texto += " "+numeros[i]; 
-            if(i/10 == 0){
-                System.out.println("\n");
-            }
+         for (int i = 0; i < numeros.length; i++) {
+            if(numeros[i] > 0)                
+                texto += " "+numeros[i]; 
+             
         }
-         System.out.print(texto+"\n");
+         System.out.println(texto);
     }
     
-    public static boolean Sortear(int numeros[], int numero, int posicao){
+    public static void Sortear(int numeros[], int posicao){
         
-        boolean retorno = false;
+        Random random = new Random();
         
-        for (int i = 0; i < numeros.length; i++) {
-            if(numeros[i] > 0 && numeros[i] == numero){
-                retorno = false;
-            }else{
+        int numero;
+        boolean procurandoNumero = true;
+        
+        while(procurandoNumero){
+            numero = (random.nextInt(90))+1;
+            boolean numeroIgual = false;
+            for (int i = 0; i < numeros.length && numeroIgual == false; i++) {
+                if (numeros[i] == numero) {
+                    numeroIgual = true;
+                }
+            }
+            if(numeroIgual == false){
                 numeros[posicao] = numero;
-                retorno = true;
+                procurandoNumero = false;
             }
         }
-        
-        return retorno;
+      
         
     }
 }
