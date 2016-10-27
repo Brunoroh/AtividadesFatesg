@@ -30,47 +30,10 @@ public class PessoaFisica extends Pessoa{
         this.cpf = cpf;
         this.datanascimento = dataNascimento;
         this.rg = rg;
+    }
         
          
-    }
-    public String getCpf() {
-        return cpf;
-    }
 
-    /**
-     * @param cpf the cpf to set
-     */
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    /**
-     * @return the rg
-     */
-    public String getRg() {
-        return rg;
-    }
-
-    /**
-     * @param rg the rg to set
-     */
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
-
-    /**
-     * @return the datanascimento
-     */
-    public LocalDate getDatanascimento() {
-        return datanascimento;
-    }
-
-    /**
-     * @param datanascimento the datanascimento to set
-     */
-    public void setDatanascimento(LocalDate datanascimento) {
-        this.datanascimento = datanascimento;
-    }
     
     
 }

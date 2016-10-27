@@ -1,10 +1,11 @@
 package console;
 
 import entidade.EAssociado;
+import entidade.ETipoAssociado;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Scanner;
 import persistencia.PAssociado;
+import persistencia.PTipoAssociado;
 
 public class PAssociadoTeste {
 
@@ -12,22 +13,22 @@ public class PAssociadoTeste {
         
         Scanner scanner = new Scanner(System.in);
 
-//        System.out.println("Testando a inclusao do associado");
-//        
-//        PTipoAssociado pTipoAssociado = new PTipoAssociado();
-//        ETipoAssociado eTipoAssociado = pTipoAssociado.consultar(1);
-//        
-//        EAssociado associado = new EAssociado();
-//        associado.setNome("Bruno");
-//        associado.setEndereco("Rua sr 07");
-//        associado.setTelefone("6232085002");
-//        associado.setTipoAssociado(eTipoAssociado);
-//        
-//        PAssociado pAssociado = new PAssociado();
-//        
-//        pAssociado.incluir(associado);
-//        
-//        System.out.println("Fim do teste de inclusão de associado");
+        System.out.println("Testando a inclusao do associado");
+        
+        PTipoAssociado pTipoAssociado = new PTipoAssociado();
+        ETipoAssociado eTipoAssociado = pTipoAssociado.consultar(1);
+        
+        EAssociado associado = new EAssociado();
+        associado.setNome("Bruno");
+        associado.setEndereco("Rua sr 07");
+        associado.setTelefone("6232085002");
+        associado.setTipoAssociado(eTipoAssociado);
+        
+        PAssociado pAssociado = new PAssociado();
+        
+        pAssociado.incluir(associado);
+        
+        System.out.println("Fim do teste de inclusão de associado");
 //
 
 //        System.out.println("Testando a alteração do associado");
