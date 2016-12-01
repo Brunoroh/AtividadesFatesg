@@ -29,7 +29,13 @@ public class Fila {
     
     public void desinfilerar(){
         qdePacientes--;
-        inicio = inicio.getProximo()
+        inicio = inicio.getProximo();
+    }
+    
+    public Paciente mostrarProximo(){
+        
+        return inicio;
+        
     }
     
     

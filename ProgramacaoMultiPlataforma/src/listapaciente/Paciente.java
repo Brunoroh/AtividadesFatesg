@@ -2,15 +2,20 @@ package listapaciente;
 
 public class Paciente {
     private String nome;
-    private long cpf;
+    private int cpf;
     private int fone;
     private String email;
     private Paciente proximo;
 
+    public Paciente(int cpf) {
+        this.cpf = cpf;
+    }
+    
     public Paciente() {
     }
 
-    public Paciente(String nome, long cpf, int fone, String email, Paciente proximo) {
+
+    public Paciente(String nome, int cpf, int fone, String email, Paciente proximo) {
         this.nome = nome;
         this.cpf = cpf;
         this.fone = fone;
@@ -28,11 +33,11 @@ public class Paciente {
         this.nome = nome;
     }
 
-    public long getCpf() {
+    public int getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(int cpf) {
         this.cpf = cpf;
     }
 

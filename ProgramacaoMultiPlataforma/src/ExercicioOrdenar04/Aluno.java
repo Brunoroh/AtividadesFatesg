@@ -19,6 +19,7 @@ public class Aluno {
     public String toString(){
         return String.format(matricula+" : "+nome+" : "+ingresso+" : "+turno+" : "+matriz);
     }
+    
 
     
 
